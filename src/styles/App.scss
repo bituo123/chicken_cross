@@ -1,0 +1,101 @@
+.app {
+  width: 100%;
+  
+  &-header {
+    padding: $spacing-lg 0;
+    
+    h1 {
+      margin-bottom: $spacing-lg;
+      background: linear-gradient(45deg, $primary-color, $secondary-color);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  }
+}
+
+.install-button {
+  background: linear-gradient(45deg, $primary-color, $secondary-color);
+  color: white;
+  border: none;
+  padding: $spacing-sm $spacing-md;
+  border-radius: 8px;
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-bottom: $spacing-lg;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  // 移除移动端点击高亮
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  
+  // 移动端点击效果
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba($primary-color, 0.3);
+  }
+}
+
+.counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-md;
+  
+  button {
+    font-size: 1.2em;
+    padding: $spacing-sm $spacing-md;
+    
+    // 移除移动端点击高亮
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    
+    // 移动端点击效果
+    &:active {
+      transform: translateY(0);
+      box-shadow: 0 1px 2px rgba($primary-color, 0.2);
+    }
+  }
+  
+  p {
+    margin: 0;
+    opacity: 0.8;
+    
+    code {
+      background-color: rgba($primary-color, 0.1);
+      padding: 0.2em 0.4em;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+    }
+  }
+  
+  .pwa-info {
+    background: linear-gradient(135deg, rgba($primary-color, 0.1), rgba($secondary-color, 0.1));
+    padding: $spacing-sm;
+    border-radius: 8px;
+    border: 1px solid rgba($primary-color, 0.2);
+    font-weight: 500;
+  }
+}
+
+// 响应式设计
+@media (max-width: $breakpoint-md) {
+  .app-header h1 {
+    font-size: 2.5em;
+  }
+  
+  .counter button {
+    font-size: 1em;
+    padding: $spacing-xs $spacing-sm;
+  }
+  
+  .install-button {
+    font-size: 1em;
+    padding: $spacing-xs $spacing-sm;
+  }
+}

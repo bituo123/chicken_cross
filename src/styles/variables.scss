@@ -1,0 +1,24 @@
+// 颜色变量
+$primary-color: #646cff;
+$secondary-color: #535bf2;
+$background-color: #242424;
+$text-color: rgba(255, 255, 255, 0.87);
+$border-color: #1a1a1a;
+
+// 字体变量
+$font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+$font-size-base: 16px;
+$font-weight-normal: 400;
+
+// 间距变量
+$spacing-xs: 0.5rem;
+$spacing-sm: 1rem;
+$spacing-md: 1.5rem;
+$spacing-lg: 2rem;
+$spacing-xl: 3rem;
+
+// 断点变量
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
