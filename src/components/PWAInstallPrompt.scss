@@ -1,0 +1,191 @@
+.pwa-install-prompt-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  backdrop-filter: blur(8px);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.pwa-install-prompt {
+  background: white;
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 420px;
+  width: 90%;
+  margin: 1rem;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+  animation: slideInUp 0.4s ease-out;
+  position: relative;
+  
+  @media (max-width: 480px) {
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+}
+
+.pwa-install-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  
+  h2 {
+    margin: 0;
+    color: #333;
+    font-size: 1.4em;
+    font-weight: 700;
+    flex: 1;
+    text-align: left;
+    
+    @media (max-width: 480px) {
+      font-size: 1.2em;
+    }
+  }
+}
+
+.pwa-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.2em;
+  color: #999;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  
+  // 移除移动端点击高亮
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background: #f0f0f0;
+      color: #666;
+    }
+  }
+  
+  &:active {
+    background: #e0e0e0;
+    transform: scale(0.95);
+  }
+}
+
+.pwa-install-description {
+  margin: 0 0 1.5rem 0;
+  color: #666;
+  line-height: 1.6;
+  font-size: 0.95em;
+}
+
+.pwa-install-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  
+  button {
+    padding: 0.875rem 1.5rem;
+    border: none;
+    border-radius: 12px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    // 移除移动端点击高亮
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    
+    @media (max-width: 480px) {
+      padding: 0.75rem 1.25rem;
+      font-size: 0.95em;
+    }
+  }
+}
+
+.pwa-install-now-btn {
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  color: white;
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+  
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
+    }
+  }
+  
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+  }
+}
+
+.pwa-play-browser-btn {
+  background: linear-gradient(135deg, #2196F3, #1976D2);
+  color: white;
+  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
+  
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(33, 150, 243, 0.4);
+    }
+  }
+  
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(33, 150, 243, 0.3);
+  }
+}
+
+.pwa-device-hint {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 3px solid #007bff;
+  
+  small {
+    color: #6c757d;
+    font-size: 0.8em;
+    line-height: 1.4;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

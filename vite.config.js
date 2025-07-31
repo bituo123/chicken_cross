@@ -15,9 +15,9 @@ export default defineConfig({
       registerType: "autoUpdate",
       includeAssets: ["favicon.ico", "apple-touch-icon_180.png", "vite.svg"],
       manifest: {
-        name: "React Vite SCSS App",
-        short_name: "ReactApp",
-        description: "A React 18 + Vite + SCSS Progressive Web App",
+        name: "chickenCross",
+        short_name: "chickenCross",
+        description: "小鸡过马路",
         theme_color: "#646cff",
         background_color: "#242424",
         display: "standalone",

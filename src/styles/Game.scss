@@ -1,0 +1,337 @@
+// 确保全屏显示，移除所有边距和填充
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.game-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: linear-gradient(135deg, #87CEEB 0%, #98FB98 100%);
+  z-index: 1000;
+}
+
+.game-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  
+  canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+
+// 游戏右上角安装按钮
+.game-install-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+}
+
+.save-to-local-button {
+  background: linear-gradient(45deg, #4CAF50, #45a049);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 20px;
+  font-size: 0.9em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+  backdrop-filter: blur(10px);
+  
+  // 移除移动端点击高亮
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(76, 175, 80, 0.4);
+    }
+  }
+  
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(76, 175, 80, 0.3);
+  }
+}
+
+.game-ui {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 100;
+  
+  .score {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+  }
+  
+  .game-over {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    margin-top: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    
+    h2 {
+      color: #e74c3c;
+      margin: 0 0 15px 0;
+      font-size: 1.8em;
+    }
+    
+    p {
+      color: #333;
+      margin: 0;
+      font-size: 1.1em;
+    }
+  }
+}
+
+// 游戏结束后的安装按钮
+.install-after-game-button {
+  background: linear-gradient(45deg, #4CAF50, #45a049);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 1em;
+  font-weight: 600;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  // 移除移动端点击高亮
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(76, 175, 80, 0.4);
+    }
+  }
+  
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(76, 175, 80, 0.3);
+  }
+}
+
+.game-controls {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  text-align: center;
+  
+  .controls-hint {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+    
+    p {
+      margin: 5px 0;
+      font-size: 0.9em;
+      color: #555;
+      
+      &:first-child {
+        font-weight: bold;
+        color: #333;
+      }
+    }
+  }
+  
+  .control-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    
+    .control-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    
+    .control-btn {
+      width: 60px;
+      height: 60px;
+      border: none;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #ffffff, #e6e6e6);
+      box-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #333;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+      
+      // 移除移动端点击高亮
+      -webkit-tap-highlight-color: transparent;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      
+      // 只在桌面端显示hover效果
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 
+            0 6px 12px rgba(0, 0, 0, 0.15),
+            inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+      }
+      
+      &:active {
+        transform: translateY(0);
+        box-shadow: 
+          0 2px 4px rgba(0, 0, 0, 0.1),
+          inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        background: linear-gradient(145deg, #e6e6e6, #ffffff);
+      }
+      
+      &.up {
+        margin-bottom: 5px;
+      }
+      
+      &.down {
+        margin: 0 10px;
+      }
+    }
+  }
+}
+
+// 移动端优化
+@media (max-width: 768px) {
+  .game-install-button {
+    top: 10px;
+    right: 10px;
+  }
+  
+  .save-to-local-button {
+    padding: 8px 12px;
+    font-size: 0.8em;
+  }
+  
+  .install-after-game-button {
+    padding: 10px 16px;
+    font-size: 0.9em;
+  }
+  
+  .game-ui {
+    top: 10px;
+    left: 10px;
+    
+    .score {
+      padding: 8px 16px;
+      font-size: 1em;
+    }
+    
+    .game-over {
+      padding: 20px;
+      
+      h2 {
+        font-size: 1.5em;
+      }
+      
+      p {
+        font-size: 1em;
+      }
+    }
+  }
+  
+  .game-controls {
+    bottom: 10px;
+    
+    .controls-hint {
+      padding: 10px 15px;
+      
+      p {
+        font-size: 0.8em;
+      }
+    }
+    
+    .control-buttons .control-btn {
+      width: 50px;
+      height: 50px;
+      font-size: 1.2em;
+    }
+  }
+}
+
+// 超小屏幕优化
+@media (max-width: 480px) {
+  .game-install-button {
+    top: 5px;
+    right: 5px;
+  }
+  
+  .save-to-local-button {
+    padding: 6px 10px;
+    font-size: 0.7em;
+  }
+  
+  .game-ui {
+    top: 5px;
+    left: 5px;
+    
+    .score {
+      padding: 6px 12px;
+      font-size: 0.9em;
+    }
+    
+    .game-over {
+      padding: 15px;
+      
+      h2 {
+        font-size: 1.3em;
+      }
+      
+      p {
+        font-size: 0.9em;
+      }
+    }
+  }
+  
+  .install-after-game-button {
+    padding: 8px 12px;
+    font-size: 0.8em;
+  }
+}
