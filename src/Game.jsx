@@ -9,6 +9,25 @@ const Game = ({ onInstall, showInstallButton }) => {
   const [isGameOver, setIsGameOver] = useState(false);
   const [showControls, setShowControls] = useState(true);
 
+  const [cameraParams, setCameraParams] = useState({
+    rotationX: 50, // 度数
+    rotationY: 0, // 度数
+    rotationZ: 0, // 度数
+    distance: 500,
+    zoom: 2,
+  });
+
+  const resetCameraParams = () => {
+    console.log("切换相机");
+
+    setCameraParams({
+      rotationX: 50,
+      rotationY: 20,
+      rotationZ: 10,
+      distance: 500,
+      zoom: 2,
+    });
+  };
   useEffect(() => {
     if (!mountRef.current) return;
 
@@ -36,7 +55,7 @@ const Game = ({ onInstall, showInstallButton }) => {
       const scene = new THREE.Scene();
 
       // ========== 摄像机设置 ==========
-      const distance = 500;
+      const distance = cameraParams.distance;
       const camera = new THREE.OrthographicCamera(
         window.innerWidth / -2,
         window.innerWidth / 2,
@@ -46,9 +65,10 @@ const Game = ({ onInstall, showInstallButton }) => {
         10000
       );
 
-      camera.rotation.x = (50 * Math.PI) / 180;
-      camera.rotation.y = (20 * Math.PI) / 180;
-      camera.rotation.z = (10 * Math.PI) / 180;
+      // 使用状态中的相机参数
+      camera.rotation.x = (cameraParams.rotationX * Math.PI) / 180;
+      camera.rotation.y = (cameraParams.rotationY * Math.PI) / 180;
+      camera.rotation.z = (cameraParams.rotationZ * Math.PI) / 180;
 
       const initialCameraPositionY = -Math.tan(camera.rotation.x) * distance;
       const initialCameraPositionX =
